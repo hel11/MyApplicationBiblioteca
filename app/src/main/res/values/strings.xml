@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Biblioteca</string>
+    <string name="title_activity_biblioteca_detail_activicty">BibliotecaDetailActivicty</string>
+    <string name="title_activity_ttr">ttr</string>
+</resources>

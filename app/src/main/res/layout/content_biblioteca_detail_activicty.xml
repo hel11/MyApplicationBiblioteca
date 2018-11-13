@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".BibliotecaDetailActivicty"
+    tools:showIn="@layout/activity_biblioteca_detail_activicty">
+
+
+    <LinearLayout
+        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <ImageView
+            android:id="@+id/biblioteca_imagem"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/livro1" />
+
+        <TextView
+            android:id="@+id/biblioteca_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Biblioteca Virtual"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"/>
+
+        <TextView
+            android:id="@+id/biblioteca_descricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seja Bem Vindo"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:layout_weight="0.5"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="3">
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buscar"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Visitar"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Detalhes"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
