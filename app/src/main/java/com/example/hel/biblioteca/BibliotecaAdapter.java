@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +27,11 @@ public class BibliotecaAdapter extends RecyclerView.Adapter<BibliotecaAdapter.Bi
 
         this.context = ctx;
         this.biblioteca = new ArrayList<>();
-        biblioteca.add(new Biblioteca("Pequeno","Uma Pequena História",R.drawable.livro1));
-        biblioteca.add(new Biblioteca("Bela","História da Bela Adormecida",R.drawable.livro2));
-        biblioteca.add(new Biblioteca("Biblía","Sagrada Escritura",R.drawable.livro3));
+        List<Biblioteca> savedList = BibliotecaSharedPreferences.loadBibliotecaList(context, "biblioteca");
+        if (savedList != null){
+            biblioteca.addAll(savedList);
+        }
+
     }
 
     @NonNull
@@ -39,10 +44,11 @@ public class BibliotecaAdapter extends RecyclerView.Adapter<BibliotecaAdapter.Bi
     @Override
     public void onBindViewHolder(@NonNull final BibliotecaViewHolder holder, int position) {
         final Biblioteca bibliotec = biblioteca.get(position);
-        holder.res.setImageResource(bibliotec.getRes());
+
+        Picasso.get().load(new File(bibliotec.getPath())).into(holder.image);
         holder.nome.setText(bibliotec.getNome());
         holder.descricao.setText(bibliotec.getDescricao());
-       holder.res.setOnClickListener(new View.OnClickListener() {
+       holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 holder.OpenActivity(bibliotec);
@@ -59,21 +65,21 @@ public class BibliotecaAdapter extends RecyclerView.Adapter<BibliotecaAdapter.Bi
 
         TextView nome;
         TextView descricao;
-        ImageView res;
+        ImageView image;
 
         public BibliotecaViewHolder(@NonNull View itemView) {
             super(itemView);
             nome=itemView.findViewById(R.id.biblioteca_nome);
             descricao=itemView.findViewById(R.id.biblioteca_descricao);
-            res=itemView.findViewById(R.id.biblioteca_imagem);
+            image=itemView.findViewById(R.id.biblioteca_imagem);
         }
 
         public void OpenActivity (Biblioteca biblioteca){
             Intent intent = new Intent(context, BibliotecaDetailActivicty.class);
            intent.putExtra("nome",biblioteca.getNome());
            intent.putExtra("descricao",biblioteca.getDescricao());
-           intent.putExtra("res",biblioteca.getRes());
-            context.startActivity(intent);
+//           intent.putExtra("res",biblioteca.getPath());
+//            context.startActivity(intent);
 
 
         }

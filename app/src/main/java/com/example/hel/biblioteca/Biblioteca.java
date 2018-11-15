@@ -6,12 +6,21 @@ public class Biblioteca {
 
     private String nome;
     private String descricao;
-    private int res;
 
-    public Biblioteca(String nome, String descricao, int res){
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    private String path;
+
+    public Biblioteca(String nome, String descricao, String path){
         this.nome = nome;
         this.descricao = descricao;
-        this.res = res;
+        this.path = path;
     }
 
     public String getNome() {
@@ -30,11 +39,5 @@ public class Biblioteca {
         this.descricao = descricao;
     }
 
-    public int getRes() {
-        return res;
-    }
 
-    public void setRes(int res) {
-        this.res = res;
-    }
 }
